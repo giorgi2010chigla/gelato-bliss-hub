@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +6,35 @@
 
 @layer base {
   :root {
-    --background: 36 33% 97%;
-    --foreground: 24 30% 16%;
+    --background: 180 60% 98%;
+    --foreground: 200 40% 16%;
 
-    --card: 36 30% 95%;
-    --card-foreground: 24 30% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 40% 16%;
 
-    --popover: 36 33% 97%;
-    --popover-foreground: 24 30% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 40% 16%;
 
-    --primary: 82 32% 40%;
-    --primary-foreground: 36 33% 97%;
+    --primary: 174 65% 46%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 350 45% 65%;
-    --secondary-foreground: 36 33% 97%;
+    --secondary: 340 72% 65%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 36 20% 90%;
-    --muted-foreground: 24 15% 45%;
+    --muted: 180 20% 93%;
+    --muted-foreground: 200 15% 45%;
 
-    --accent: 36 50% 88%;
-    --accent-foreground: 24 30% 16%;
+    --accent: 40 85% 62%;
+    --accent-foreground: 30 50% 18%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 36 20% 85%;
-    --input: 36 20% 85%;
-    --ring: 82 32% 40%;
+    --border: 180 20% 88%;
+    --input: 180 20% 88%;
+    --ring: 174 65% 46%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -45,14 +45,14 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-display: 'Fredoka', cursive, sans-serif;
+    --font-body: 'Nunito', system-ui, sans-serif;
 
-    --chocolate: 24 50% 22%;
-    --cream: 40 60% 94%;
-    --pistachio: 82 32% 40%;
-    --strawberry: 350 45% 65%;
-    --vanilla: 42 50% 90%;
+    --sky: 174 65% 46%;
+    --berry: 340 72% 65%;
+    --waffle: 40 85% 62%;
+    --mint: 160 40% 88%;
+    --chocolate-dark: 20 45% 25%;
   }
 
   * {
