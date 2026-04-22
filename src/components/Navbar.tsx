@@ -1,38 +1,38 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Menu", href: "#menu" },
-  { label: "Visit Us", href: "#visit" },
+  { label: "Food", href: "#menu" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "Visit", href: "#visit" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
-        <a href="#home" className="font-display text-2xl font-bold text-primary">
-          🍦 Spaguletti
+        <a href="#home" className="font-display text-xl md:text-2xl font-bold text-primary">
+          Forest Country Place
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="font-body text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
+              className="font-body text-sm font-bold uppercase tracking-wide text-muted-foreground hover:text-primary transition-colors"
             >
               {link.label}
             </a>
           ))}
           <a
-            href="tel:+995598138134"
-            className="bg-primary text-primary-foreground font-body font-bold text-sm px-5 py-2.5 rounded-full hover:brightness-110 transition-all"
+            href="tel:+13184909001"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body font-bold text-sm px-5 py-2.5 rounded-md hover:brightness-110 transition-all"
           >
-            Call Us
+            <Phone size={16} /> Call
           </a>
         </div>
         <button
@@ -63,10 +63,10 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="tel:+995598138134"
-                className="bg-primary text-primary-foreground font-body font-bold text-sm px-5 py-2.5 rounded-full text-center hover:brightness-110 transition-all"
+                href="tel:+13184909001"
+                className="bg-primary text-primary-foreground font-body font-bold text-sm px-5 py-2.5 rounded-md text-center hover:brightness-110 transition-all"
               >
-                Call Us
+                Call +1 318-490-9001
               </a>
             </div>
           </motion.div>
