@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 45 40% 96%;
-    --foreground: 135 28% 15%;
+    --background: 38 34% 94%;
+    --foreground: 22 28% 13%;
 
-    --card: 44 42% 99%;
-    --card-foreground: 135 28% 15%;
+    --card: 42 42% 98%;
+    --card-foreground: 22 28% 13%;
 
-    --popover: 44 42% 99%;
-    --popover-foreground: 135 28% 15%;
+    --popover: 42 42% 98%;
+    --popover-foreground: 22 28% 13%;
 
-    --primary: 138 36% 27%;
-    --primary-foreground: 45 40% 96%;
+    --primary: 355 45% 29%;
+    --primary-foreground: 38 34% 94%;
 
-    --secondary: 22 45% 43%;
-    --secondary-foreground: 45 40% 96%;
+    --secondary: 151 24% 28%;
+    --secondary-foreground: 38 34% 94%;
 
-    --muted: 43 26% 88%;
-    --muted-foreground: 132 10% 39%;
+    --muted: 34 24% 86%;
+    --muted-foreground: 24 13% 38%;
 
-    --accent: 41 76% 58%;
-    --accent-foreground: 135 28% 15%;
+    --accent: 42 69% 52%;
+    --accent-foreground: 22 28% 13%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 41 22% 80%;
-    --input: 41 22% 80%;
-    --ring: 138 36% 27%;
+    --border: 32 23% 76%;
+    --input: 32 23% 76%;
+    --ring: 355 45% 29%;
 
     --radius: 0.5rem;
 
@@ -45,7 +45,7 @@
     --sidebar-border: 41 22% 80%;
     --sidebar-ring: 138 36% 27%;
 
-    --font-display: 'Libre Baskerville', Georgia, serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Source Sans 3', system-ui, sans-serif;
 
     --forest: 138 36% 27%;
