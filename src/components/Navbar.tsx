@@ -1,25 +1,53 @@
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Language } from "@/pages/Index";
 
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Food", href: "#menu" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Visit", href: "#visit" },
-];
+const labels = {
+  en: {
+    brand: "Pasanauri",
+    links: [
+      { label: "Home", href: "#home" },
+      { label: "Food", href: "#menu" },
+      { label: "Reviews", href: "#reviews" },
+      { label: "Visit", href: "#visit" },
+    ],
+    call: "Call",
+    callFull: "Call 595 63 00 03",
+    language: "ქართული",
+  },
+  ka: {
+    brand: "ფასანაური",
+    links: [
+      { label: "მთავარი", href: "#home" },
+      { label: "მენიუ", href: "#menu" },
+      { label: "შეფასებები", href: "#reviews" },
+      { label: "მისვლა", href: "#visit" },
+    ],
+    call: "ზარი",
+    callFull: "დარეკვა 595 63 00 03",
+    language: "English",
+  },
+};
 
-const Navbar = () => {
+type NavbarProps = {
+  language: Language;
+  onLanguageChange: (language: Language) => void;
+};
+
+const Navbar = ({ language, onLanguageChange }: NavbarProps) => {
   const [open, setOpen] = useState(false);
+  const copy = labels[language];
+  const nextLanguage: Language = language === "en" ? "ka" : "en";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <a href="#home" className="font-display text-xl md:text-2xl font-bold text-primary">
-          Sakhli 1904
+          {copy.brand}
         </a>
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {copy.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -28,11 +56,19 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <button
+            type="button"
+            onClick={() => onLanguageChange(nextLanguage)}
+            className="border border-border text-foreground font-body font-bold text-sm px-4 py-2.5 rounded-md hover:bg-muted transition-all"
+            aria-label="Change language"
+          >
+            {copy.language}
+          </button>
           <a
-            href="tel:+995551191904"
+            href="tel:+995595630003"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body font-bold text-sm px-5 py-2.5 rounded-md hover:brightness-110 transition-all"
           >
-            <Phone size={16} /> Call
+            <Phone size={16} /> {copy.call}
           </a>
         </div>
         <button
@@ -52,7 +88,7 @@ const Navbar = () => {
             className="md:hidden overflow-hidden bg-card border-b border-border"
           >
             <div className="flex flex-col gap-4 px-6 py-4">
-              {navLinks.map((link) => (
+              {copy.links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -62,11 +98,21 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
+              <button
+                type="button"
+                onClick={() => {
+                  onLanguageChange(nextLanguage);
+                  setOpen(false);
+                }}
+                className="border border-border text-foreground font-body font-bold text-sm px-5 py-2.5 rounded-md text-center hover:bg-muted transition-all"
+              >
+                {copy.language}
+              </button>
               <a
-                href="tel:+995551191904"
+                href="tel:+995595630003"
                 className="bg-primary text-primary-foreground font-body font-bold text-sm px-5 py-2.5 rounded-md text-center hover:brightness-110 transition-all"
               >
-                Call 551 19 19 04
+                {copy.callFull}
               </a>
             </div>
           </motion.div>
