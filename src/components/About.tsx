@@ -1,53 +1,57 @@
 import { motion } from "framer-motion";
-import spaghettiImg from "@/assets/spaghetti-icecream.jpg";
+import { BadgeDollarSign, Coffee, Store } from "lucide-react";
+import foodImg from "@/assets/forest-country-food.jpg";
+
+const highlights = [
+  { icon: Coffee, title: "Breakfast & lunch", text: "Biscuits, bacon, eggs with cheese, grits, sandwiches, burgers, and fries." },
+  { icon: Store, title: "Country-store feel", text: "A hidden gem with friendly folks, local goods, and unique knick-knacks." },
+  { icon: BadgeDollarSign, title: "Good prices", text: "Comforting meals in the reported $10–20 range." },
+];
 
 const About = () => (
-  <section id="about" className="py-24 md:py-32 bg-background">
+  <section id="about" className="py-20 md:py-28 bg-background">
     <div className="container mx-auto px-6">
-      <div className="grid md:grid-cols-2 gap-16 items-center">
+      <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -36 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="order-2 md:order-1"
         >
-          <p className="font-display text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-            Our Story
+          <p className="font-body text-sm font-bold text-secondary uppercase tracking-wider mb-3">
+            Hometown hospitality
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-            Where Every Scoop <br />
-            <span className="text-berry">Tells a Story</span>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+            The kind of place that feels familiar the moment you walk in.
           </h2>
-          <p className="font-body text-muted-foreground leading-relaxed mb-5 text-lg">
-            At Spaguletti, we turn ice cream into art. Our signature spaghetti ice cream — 
-            vanilla gelato pressed through a special mold, topped with strawberry sauce and 
-            white chocolate shavings — has been making people smile across Tbilisi.
+          <p className="font-body text-muted-foreground leading-relaxed text-lg mb-7">
+            Guests call Forest Country Place a delightful little spot with terrific food, excellent service, and a warm atmosphere. Stop in for a quick breakfast sandwich, a cooked-to-order plate, Hunt Brothers Pizza, or a generous lunch on the road.
           </p>
-          <p className="font-body text-muted-foreground leading-relaxed text-lg">
-            Paired with our fresh, golden Belgian waffles and a rainbow of handcrafted flavors, 
-            every visit to our cozy shop on Kostava Street is a little celebration. 
-            With a perfect 5.0 ⭐ rating, our customers agree!
-          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {highlights.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="border border-border bg-card p-5 rounded-md">
+                <Icon className="text-primary mb-3" size={24} />
+                <h3 className="font-display text-base font-bold text-foreground mb-2">{title}</h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">{text}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 36 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="order-1 md:order-2"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="relative"
         >
-          <div className="relative">
-            <div className="absolute -inset-4 bg-primary/10 rounded-3xl -rotate-3" />
-            <img
-              src={spaghettiImg}
-              alt="Spaghetti ice cream dessert with strawberry sauce"
-              className="relative rounded-3xl shadow-xl w-full max-w-md mx-auto"
-              loading="lazy"
-              width={800}
-              height={1000}
-            />
-          </div>
+          <img
+            src={foodImg}
+            alt="Southern breakfast and lunch plate with eggs, biscuits, bacon, sandwiches, and fries"
+            className="rounded-md shadow-xl w-full"
+            loading="lazy"
+            width={1400}
+            height={1000}
+          />
         </motion.div>
       </div>
     </div>

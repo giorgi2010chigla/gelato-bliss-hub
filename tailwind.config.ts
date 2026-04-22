@@ -9,13 +9,13 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
       fontFamily: {
-        display: ['Fredoka', 'cursive', 'sans-serif'],
-        body: ['Nunito', 'system-ui', 'sans-serif'],
+        display: ['Libre Baskerville', 'Georgia', 'serif'],
+        body: ['Source Sans 3', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -23,11 +23,11 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        sky: "hsl(var(--sky))",
-        berry: "hsl(var(--berry))",
-        waffle: "hsl(var(--waffle))",
-        mint: "hsl(var(--mint))",
-        "chocolate-dark": "hsl(var(--chocolate-dark))",
+        forest: "hsl(var(--forest))",
+        pine: "hsl(var(--pine))",
+        cedar: "hsl(var(--cedar))",
+        cream: "hsl(var(--cream))",
+        cornbread: "hsl(var(--cornbread))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -81,15 +81,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "float": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-12px)" },
+        "slow-rise": {
+          from: { opacity: "0", transform: "translateY(18px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float": "float 3s ease-in-out infinite",
+        "slow-rise": "slow-rise 0.7s ease-out both",
       },
     },
   },

@@ -1,96 +1,50 @@
 import { motion } from "framer-motion";
-import waffleImg from "@/assets/waffle.jpg";
 
-const iceCreamFlavors = [
-  { name: "Spaghetti Ice Cream", description: "Our legendary signature — vanilla pressed into spaghetti shapes with strawberry sauce", emoji: "🍝", featured: true },
-  { name: "Pistachio", description: "Rich and nutty, made with real Sicilian pistachios", emoji: "🌿" },
-  { name: "Strawberry", description: "Fresh summer berries, naturally sweet and vibrant", emoji: "🍓" },
-  { name: "Chocolate Fudge", description: "Deep, dark, and deliciously indulgent", emoji: "🍫" },
-  { name: "Mango Sorbet", description: "Tropical and refreshing, completely dairy-free", emoji: "🥭" },
-  { name: "Cookie Dough", description: "Loaded with chunks of real cookie dough", emoji: "🍪" },
+const menuItems = [
+  { name: "Country Breakfast Plates", description: "Biscuits, bacon, eggs with cheese, grits, and cooked-to-order morning favorites." },
+  { name: "Ready-to-Go Breakfast", description: "Quick breakfast sandwiches for travelers, workers, and early starts." },
+  { name: "Club Sandwich", description: "A guest favorite mentioned again and again for lunch." },
+  { name: "Smash Burger & Fried Pickles", description: "A hearty lunch combo called out by happy reviewers." },
+  { name: "Hunt Brothers Pizza", description: "Pizza available alongside home-cooked country food." },
+  { name: "Snacks, Candy & Peppers", description: "Country-store staples and local finds for the road." },
 ];
 
 const MenuSection = () => (
-  <section id="menu" className="py-24 md:py-32 bg-mint/50">
+  <section id="menu" className="py-20 md:py-28 bg-muted">
     <div className="container mx-auto px-6">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-16"
+        className="max-w-3xl mb-12"
       >
-        <p className="font-display text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-          Our Menu
+        <p className="font-body text-sm font-bold text-secondary uppercase tracking-wider mb-3">
+          Menu highlights
         </p>
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-          Ice Cream & Waffles
+        <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
+          Clean, simple, country cooking.
         </h2>
+        <p className="font-body text-lg text-muted-foreground leading-relaxed">
+          A practical stop for dine-in or drive-through, with comforting food, fair prices, and fast service.
+        </p>
       </motion.div>
 
-      {/* Ice Cream Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto mb-16">
-        {iceCreamFlavors.map((flavor, i) => (
-          <motion.div
-            key={flavor.name}
-            initial={{ opacity: 0, y: 25 }}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {menuItems.map((item, i) => (
+          <motion.article
+            key={item.name}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.08 }}
-            className={`bg-card rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-default ${
-              flavor.featured ? "sm:col-span-2 lg:col-span-1 ring-2 ring-primary/30" : ""
-            }`}
+            transition={{ duration: 0.4, delay: i * 0.06 }}
+            className="bg-card border border-border rounded-md p-6 shadow-sm"
           >
-            <span className="text-3xl mb-3 block">{flavor.emoji}</span>
-            <h3 className="font-display text-lg font-semibold text-foreground mb-1">
-              {flavor.name}
-            </h3>
-            {flavor.featured && (
-              <span className="inline-block bg-primary/10 text-primary text-xs font-bold font-body px-2.5 py-0.5 rounded-full mb-2">
-                ⭐ Signature
-              </span>
-            )}
-            <p className="font-body text-sm text-muted-foreground leading-relaxed">
-              {flavor.description}
-            </p>
-          </motion.div>
+            <h3 className="font-display text-xl font-bold text-foreground mb-3">{item.name}</h3>
+            <p className="font-body text-muted-foreground leading-relaxed">{item.description}</p>
+          </motion.article>
         ))}
       </div>
-
-      {/* Waffles Feature */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        className="bg-card rounded-3xl shadow-sm overflow-hidden max-w-4xl mx-auto"
-      >
-        <div className="grid md:grid-cols-2">
-          <div className="p-10 md:p-12 flex flex-col justify-center">
-            <span className="text-4xl mb-4 block">🧇</span>
-            <h3 className="font-display text-3xl font-bold text-foreground mb-4">
-              Belgian Waffles
-            </h3>
-            <p className="font-body text-muted-foreground leading-relaxed text-lg mb-4">
-              Golden, crispy on the outside, fluffy on the inside. Top them with 
-              ice cream, chocolate drizzle, fresh berries, whipped cream — or all of the above!
-            </p>
-            <p className="font-body text-sm text-primary font-semibold">
-              Made fresh to order, every single time.
-            </p>
-          </div>
-          <div className="h-64 md:h-auto">
-            <img
-              src={waffleImg}
-              alt="Golden Belgian waffle topped with ice cream, chocolate and raspberries"
-              className="w-full h-full object-cover"
-              loading="lazy"
-              width={800}
-              height={800}
-            />
-          </div>
-        </div>
-      </motion.div>
     </div>
   </section>
 );
