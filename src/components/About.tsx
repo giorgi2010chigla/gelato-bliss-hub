@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { BadgeDollarSign, Coffee, Store } from "lucide-react";
-import foodImg from "@/assets/forest-country-food.jpg";
+import { GlassWater, Home, Utensils } from "lucide-react";
+import foodImg from "@/assets/sakhli-1904-food.jpg";
 
 const highlights = [
-  { icon: Coffee, title: "Breakfast & lunch", text: "Biscuits, bacon, eggs with cheese, grits, sandwiches, burgers, and fries." },
-  { icon: Store, title: "Country-store feel", text: "A hidden gem with friendly folks, local goods, and unique knick-knacks." },
-  { icon: BadgeDollarSign, title: "Good prices", text: "Comforting meals in the reported $10–20 range." },
+  { icon: Home, title: "Historic home", text: "A family apartment transformed into a cozy, eclectic Georgian dining room." },
+  { icon: Utensils, title: "Traditional dishes", text: "Khinkali, khachapuri, shkmeruli, dolma, kharcho, salads, and walnut starters." },
+  { icon: GlassWater, title: "Homemade wine", text: "A warm table built around Georgian flavors, wine, music, and hospitality." },
 ];
 
 const About = () => (
@@ -19,13 +19,13 @@ const About = () => (
           transition={{ duration: 0.7 }}
         >
           <p className="font-body text-sm font-bold text-secondary uppercase tracking-wider mb-3">
-            Hometown hospitality
+            Old Tbilisi hospitality
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-            The kind of place that feels familiar the moment you walk in.
+            A restaurant that feels like stepping into a Georgian family home.
           </h2>
           <p className="font-body text-muted-foreground leading-relaxed text-lg mb-7">
-            Guests call Forest Country Place a delightful little spot with terrific food, excellent service, and a warm atmosphere. Stop in for a quick breakfast sandwich, a cooked-to-order plate, Hunt Brothers Pizza, or a generous lunch on the road.
+            Sakhli 1904 is known for its antique-filled rooms, heartfelt service, and authentic Georgian cooking. Guests describe the space as museum-like, romantic, and deeply cozy — the kind of place where you sit, observe, and enjoy every minute.
           </p>
           <div className="grid sm:grid-cols-3 gap-4">
             {highlights.map(({ icon: Icon, title, text }) => (
@@ -46,7 +46,7 @@ const About = () => (
         >
           <img
             src={foodImg}
-            alt="Southern breakfast and lunch plate with eggs, biscuits, bacon, sandwiches, and fries"
+            alt="Traditional Georgian dishes with khinkali, khachapuri, wine, and pear dessert"
             className="rounded-md shadow-xl w-full"
             loading="lazy"
             width={1400}
