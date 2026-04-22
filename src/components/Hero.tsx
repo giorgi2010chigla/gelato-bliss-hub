@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, Star } from "lucide-react";
-import heroImage from "@/assets/forest-country-hero.jpg";
+import heroImage from "@/assets/forest-country-hero-clean.jpg";
 
 const Hero = () => (
   <section id="home" className="relative min-h-[92vh] flex items-center overflow-hidden">
