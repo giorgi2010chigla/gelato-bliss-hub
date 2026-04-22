@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@500;600;700;800&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,53 +6,53 @@
 
 @layer base {
   :root {
-    --background: 38 34% 94%;
-    --foreground: 22 28% 13%;
+    --background: 42 31% 94%;
+    --foreground: 18 31% 12%;
 
-    --card: 42 42% 98%;
-    --card-foreground: 22 28% 13%;
+    --card: 40 45% 98%;
+    --card-foreground: 18 31% 12%;
 
-    --popover: 42 42% 98%;
-    --popover-foreground: 22 28% 13%;
+    --popover: 40 45% 98%;
+    --popover-foreground: 18 31% 12%;
 
-    --primary: 355 45% 29%;
-    --primary-foreground: 38 34% 94%;
+    --primary: 8 54% 27%;
+    --primary-foreground: 42 31% 94%;
 
-    --secondary: 151 24% 28%;
-    --secondary-foreground: 38 34% 94%;
+    --secondary: 136 28% 25%;
+    --secondary-foreground: 42 31% 94%;
 
-    --muted: 34 24% 86%;
-    --muted-foreground: 24 13% 38%;
+    --muted: 38 26% 86%;
+    --muted-foreground: 24 12% 38%;
 
-    --accent: 42 69% 52%;
-    --accent-foreground: 22 28% 13%;
+    --accent: 38 77% 53%;
+    --accent-foreground: 18 31% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 32 23% 76%;
-    --input: 32 23% 76%;
-    --ring: 355 45% 29%;
+    --border: 31 23% 75%;
+    --input: 31 23% 75%;
+    --ring: 8 54% 27%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 45 40% 96%;
-    --sidebar-foreground: 135 28% 15%;
-    --sidebar-primary: 138 36% 27%;
-    --sidebar-primary-foreground: 45 40% 96%;
-    --sidebar-accent: 43 26% 88%;
-    --sidebar-accent-foreground: 135 28% 15%;
-    --sidebar-border: 41 22% 80%;
-    --sidebar-ring: 138 36% 27%;
+    --sidebar-background: 42 31% 94%;
+    --sidebar-foreground: 18 31% 12%;
+    --sidebar-primary: 8 54% 27%;
+    --sidebar-primary-foreground: 42 31% 94%;
+    --sidebar-accent: 38 26% 86%;
+    --sidebar-accent-foreground: 18 31% 12%;
+    --sidebar-border: 31 23% 75%;
+    --sidebar-ring: 8 54% 27%;
 
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Source Sans 3', system-ui, sans-serif;
+    --font-display: 'Noto Serif Georgian', Georgia, serif;
+    --font-body: 'Noto Sans Georgian', system-ui, sans-serif;
 
-    --forest: 138 36% 27%;
-    --pine: 135 28% 15%;
-    --cedar: 22 45% 43%;
-    --cream: 45 40% 96%;
-    --cornbread: 41 76% 58%;
+    --forest: 136 28% 25%;
+    --pine: 18 31% 12%;
+    --cedar: 8 54% 27%;
+    --cream: 42 31% 94%;
+    --cornbread: 38 77% 53%;
   }
 
   * {
