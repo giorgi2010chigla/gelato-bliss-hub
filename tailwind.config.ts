@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Libre Baskerville', 'Georgia', 'serif'],
-        body: ['Source Sans 3', 'system-ui', 'sans-serif'],
+        display: ['Noto Serif Georgian', 'Georgia', 'serif'],
+        body: ['Noto Sans Georgian', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
