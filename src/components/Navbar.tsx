@@ -16,7 +16,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         <a href="#home" className="font-display text-xl md:text-2xl font-bold text-primary">
-          Forest Country Place
+          Sakhli 1904
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
@@ -29,7 +29,7 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="tel:+13184909001"
+            href="tel:+995551191904"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body font-bold text-sm px-5 py-2.5 rounded-md hover:brightness-110 transition-all"
           >
             <Phone size={16} /> Call
@@ -63,10 +63,10 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="tel:+13184909001"
+                href="tel:+995551191904"
                 className="bg-primary text-primary-foreground font-body font-bold text-sm px-5 py-2.5 rounded-md text-center hover:brightness-110 transition-all"
               >
-                Call +1 318-490-9001
+                Call 551 19 19 04
               </a>
             </div>
           </motion.div>

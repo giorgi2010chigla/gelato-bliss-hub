@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
 const reviews = [
-  { name: "Kristan", quote: "The food and service were absolutely heavenly. I truly felt at home with the warm hospitality." },
-  { name: "Ellen Baranowski", quote: "What a delightful place to enjoy lunch. The owner was so friendly and competent. The food was great!" },
-  { name: "Ken Goode", quote: "I can not recommend them highly enough. Delightful little place with terrific food and customer service." },
-  { name: "AFA S", quote: "Excellent service and a warm atmosphere." },
+  { name: "ambre", quote: "So unique and gorgeous inside. Some of the best eggplant and walnuts I’ve had in Tbilisi." },
+  { name: "Dima Geyets", quote: "One of the most authentic Georgian places we have ever been. It felt like visiting a grandmother’s house." },
+  { name: "Den Isaak", quote: "A wonderful, beautiful place. The interior is like a museum, with delicious food and pleasant waiters." },
+  { name: "Albina Gobozova", quote: "Amazing Georgian restaurant with authentic flavors, a cozy atmosphere, great service, and welcoming staff." },
 ];
 
 const Reviews = () => (
@@ -22,13 +22,13 @@ const Reviews = () => (
             Guest reviews
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-5">
-            4.9 stars from locals and travelers.
+            4.8 stars from 569 guests.
           </h2>
           <div className="flex items-center gap-2" aria-label="4.9 star rating">
             {[...Array(5)].map((_, i) => (
               <Star key={i} size={22} className="fill-accent text-accent" />
             ))}
-            <span className="font-body font-bold text-foreground ml-2">4.9 · 37 reviews</span>
+            <span className="font-body font-bold text-foreground ml-2">4.8 · 569 reviews</span>
           </div>
         </motion.div>
         <div className="grid sm:grid-cols-2 gap-5">
