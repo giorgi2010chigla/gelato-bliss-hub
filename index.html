@@ -104,7 +104,14 @@
     <div id="root"></div>
     <script>
       (() => {
-        const routeToHash = { home: 'home', food: 'menu', menu: 'menu', reviews: 'reviews', visit: 'visit' };
+        const routeToHash = { home: 'home', food: 'menu', menu: 'menu', reviews: 'reviews', visit: 'visit', contact: 'visit' };
+        const textToHash = {
+          'home': 'home', 'მთავარი': 'home',
+          'food': 'menu', 'menu': 'menu', 'საკვები': 'menu', 'მენიუ': 'menu',
+          'reviews': 'reviews', 'review': 'reviews', 'შეფასებები': 'reviews',
+          'visit': 'visit', 'ვიზიტი': 'visit', 'მოგვინახულეთ': 'visit',
+          'contact': 'visit', 'კონტაქტი': 'visit'
+        };
         const photos = [
           ['khinkali', './assets/khinkali-menu.jpg', 'Khinkali dumplings'],
           ['ხინკალი', './assets/khinkali-menu.jpg', 'ხინკალი'],
@@ -125,19 +132,50 @@
           if (!target) return false;
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           history.replaceState(null, '', `${location.pathname}${location.search}#${id}`);
+          // Try to close any open mobile menu by clicking a visible close/hamburger button
+          setTimeout(() => {
+            const opener = document.querySelector('[aria-expanded="true"]');
+            if (opener) opener.click();
+          }, 50);
           return true;
         }
 
+        function resolveIdFromElement(el) {
+          // 1) anchor href
+          const link = el.closest('a[href]');
+          if (link) {
+            const raw = link.getAttribute('href') || '';
+            if (raw.startsWith('#')) return raw.slice(1);
+            try {
+              const url = new URL(raw, location.href);
+              if (url.origin === location.origin) {
+                if (url.hash) return url.hash.slice(1);
+                const pathKey = url.pathname.split('/').filter(Boolean).pop();
+                if (pathKey && routeToHash[pathKey.toLowerCase()]) return routeToHash[pathKey.toLowerCase()];
+              }
+            } catch (_) {}
+          }
+          // 2) button / menu item — match by visible text
+          const btn = el.closest('button, [role="menuitem"], [role="button"], [role="link"]');
+          if (btn) {
+            const txt = (btn.textContent || '').trim().toLowerCase();
+            if (txt && txt.length < 40) {
+              for (const key in textToHash) {
+                if (txt === key || txt.split(/\s+/).includes(key)) return textToHash[key];
+              }
+            }
+          }
+          return null;
+        }
+
         document.addEventListener('click', (event) => {
-          const link = event.target.closest('a[href]');
-          if (!link) return;
-          const raw = link.getAttribute('href') || '';
-          const url = new URL(raw, location.href);
-          const samePage = url.origin === location.origin && url.pathname.replace(/index\.html$/, '') === location.pathname.replace(/index\.html$/, '');
-          const pathKey = url.pathname.split('/').filter(Boolean).pop();
-          const id = raw.startsWith('#') ? raw.slice(1) : (samePage && url.hash ? url.hash.slice(1) : routeToHash[pathKey]);
-          if (id && scrollToSection(id)) event.preventDefault();
-        });
+          const id = resolveIdFromElement(event.target);
+          if (!id) return;
+          if (scrollToSection(id)) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+        }, true); // capture phase so we beat the SPA router
 
         function addMenuPhotos() {
           document.querySelectorAll('#menu article').forEach((card) => {
