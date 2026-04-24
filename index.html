@@ -18,9 +18,85 @@
     <script type="module" crossorigin src="./assets/index-l8uKhti5.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-CGOn-lhj.css">
     <style>
-      html { scroll-behavior: smooth; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+      body { overflow-x: hidden; }
+      img, video { max-width: 100%; height: auto; }
       section[id] { scroll-margin-top: 88px; }
       .menu-food-photo { width: calc(100% + 3rem); height: 190px; margin: -1.5rem -1.5rem 1.25rem; object-fit: cover; border-radius: 0.375rem 0.375rem 0 0; display: block; }
+
+      /* ===== Responsive overrides for phones ===== */
+      @media (max-width: 1024px) {
+        section[id] { scroll-margin-top: 72px; }
+      }
+
+      /* Tablet & small laptop */
+      @media (max-width: 900px) {
+        .container, [class*="max-w-"] { max-width: 100% !important; }
+      }
+
+      /* Phones (≤ 640px) */
+      @media (max-width: 640px) {
+        section[id] { scroll-margin-top: 64px; }
+
+        /* Tame oversized headings */
+        h1 { font-size: clamp(1.9rem, 8vw, 2.6rem) !important; line-height: 1.15 !important; }
+        h2 { font-size: clamp(1.5rem, 6.5vw, 2rem) !important; line-height: 1.2 !important; }
+        h3 { font-size: clamp(1.15rem, 5vw, 1.5rem) !important; line-height: 1.25 !important; }
+        p, li { font-size: clamp(0.95rem, 4vw, 1.05rem) !important; line-height: 1.55 !important; }
+
+        /* Section padding */
+        section { padding-left: 1rem !important; padding-right: 1rem !important; }
+        section > div { padding-left: 0 !important; padding-right: 0 !important; }
+
+        /* Force any multi-col grids to a single column on phones */
+        [class*="grid-cols-2"], [class*="grid-cols-3"], [class*="grid-cols-4"] {
+          grid-template-columns: 1fr !important;
+        }
+        [class*="md:grid-cols"], [class*="lg:grid-cols"] {
+          grid-template-columns: 1fr !important;
+        }
+
+        /* Hero buttons stack */
+        .hero-buttons, [class*="flex-row"]:not(nav):not(header *) {
+          flex-wrap: wrap !important;
+        }
+
+        /* Shrink hero/banner heights */
+        [class*="h-screen"], [class*="min-h-screen"] {
+          min-height: auto !important;
+          height: auto !important;
+          padding-top: 5rem !important;
+          padding-bottom: 3rem !important;
+        }
+
+        /* Menu card photo a bit shorter on phones */
+        .menu-food-photo { height: 160px; }
+
+        /* Header / nav: allow wrapping & smaller links */
+        header nav, header > div { flex-wrap: wrap !important; gap: 0.5rem !important; }
+        header a, header button { font-size: 0.9rem !important; padding: 0.4rem 0.6rem !important; }
+
+        /* Tables / wide content scroll instead of overflow */
+        table { display: block; overflow-x: auto; width: 100%; }
+      }
+
+      /* Very small phones (≤ 380px, e.g. iPhone SE 1st gen, Galaxy Fold cover) */
+      @media (max-width: 380px) {
+        h1 { font-size: 1.7rem !important; }
+        h2 { font-size: 1.35rem !important; }
+        section { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+        .menu-food-photo { height: 140px; width: calc(100% + 2rem); margin: -1rem -1rem 1rem; }
+        header a, header button { font-size: 0.82rem !important; padding: 0.3rem 0.45rem !important; }
+      }
+
+      /* Landscape phones – keep hero compact */
+      @media (max-height: 500px) and (orientation: landscape) {
+        [class*="h-screen"], [class*="min-h-screen"] {
+          min-height: auto !important;
+          padding-top: 4rem !important;
+          padding-bottom: 2rem !important;
+        }
+      }
     </style>
   </head>
 
