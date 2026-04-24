@@ -98,6 +98,52 @@
 
       /* Landscape phones – keep hero compact */
       /* (landscape hero override removed — restore original look) */
+
+      /* ===== Decorative Georgian-inspired ornaments ===== */
+      .gx-ornament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        margin: 2.5rem auto;
+        max-width: 720px;
+        width: 100%;
+        opacity: 0.55;
+        pointer-events: none;
+      }
+      .gx-ornament .gx-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, currentColor 40%, currentColor 60%, transparent);
+        color: hsl(var(--primary, 25 60% 45%));
+      }
+      .gx-ornament svg {
+        width: 56px;
+        height: 56px;
+        color: hsl(var(--primary, 25 60% 45%));
+        flex-shrink: 0;
+      }
+      @media (max-width: 640px) {
+        .gx-ornament { margin: 1.75rem auto; gap: 0.75rem; padding: 0 1rem; }
+        .gx-ornament svg { width: 40px; height: 40px; }
+      }
+
+      /* Subtle corner flourishes inside hero/visit blank space */
+      .gx-corner {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        opacity: 0.18;
+        pointer-events: none;
+        color: hsl(var(--primary, 25 60% 45%));
+      }
+      .gx-corner.tl { top: 1rem; left: 1rem; }
+      .gx-corner.tr { top: 1rem; right: 1rem; transform: scaleX(-1); }
+      .gx-corner.bl { bottom: 1rem; left: 1rem; transform: scaleY(-1); }
+      .gx-corner.br { bottom: 1rem; right: 1rem; transform: scale(-1, -1); }
+      @media (max-width: 640px) {
+        .gx-corner { width: 70px; height: 70px; opacity: 0.14; }
+      }
     </style>
   </head>
 
