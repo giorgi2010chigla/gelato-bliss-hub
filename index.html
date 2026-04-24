@@ -73,13 +73,7 @@
           flex-wrap: wrap !important;
         }
 
-        /* Shrink hero/banner heights */
-        [class*="h-screen"], [class*="min-h-screen"] {
-          min-height: auto !important;
-          height: auto !important;
-          padding-top: 5rem !important;
-          padding-bottom: 3rem !important;
-        }
+        /* (hero/banner heights left at original — user wants the original clipping look back) */
 
         /* Menu card photo: center horizontally on phones */
         .menu-food-photo { height: 160px; width: 100% !important; margin: 0 auto 1rem !important; border-radius: 0.375rem !important; object-position: center center; display: block; }
@@ -103,12 +97,52 @@
       }
 
       /* Landscape phones – keep hero compact */
-      @media (max-height: 500px) and (orientation: landscape) {
-        [class*="h-screen"], [class*="min-h-screen"] {
-          min-height: auto !important;
-          padding-top: 4rem !important;
-          padding-bottom: 2rem !important;
-        }
+      /* (landscape hero override removed — restore original look) */
+
+      /* ===== Decorative Georgian-inspired ornaments ===== */
+      .gx-ornament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        margin: 2.5rem auto;
+        max-width: 720px;
+        width: 100%;
+        opacity: 0.55;
+        pointer-events: none;
+      }
+      .gx-ornament .gx-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, currentColor 40%, currentColor 60%, transparent);
+        color: hsl(var(--primary, 25 60% 45%));
+      }
+      .gx-ornament svg {
+        width: 56px;
+        height: 56px;
+        color: hsl(var(--primary, 25 60% 45%));
+        flex-shrink: 0;
+      }
+      @media (max-width: 640px) {
+        .gx-ornament { margin: 1.75rem auto; gap: 0.75rem; padding: 0 1rem; }
+        .gx-ornament svg { width: 40px; height: 40px; }
+      }
+
+      /* Subtle corner flourishes inside hero/visit blank space */
+      .gx-corner {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        opacity: 0.18;
+        pointer-events: none;
+        color: hsl(var(--primary, 25 60% 45%));
+      }
+      .gx-corner.tl { top: 1rem; left: 1rem; }
+      .gx-corner.tr { top: 1rem; right: 1rem; transform: scaleX(-1); }
+      .gx-corner.bl { bottom: 1rem; left: 1rem; transform: scaleY(-1); }
+      .gx-corner.br { bottom: 1rem; right: 1rem; transform: scale(-1, -1); }
+      @media (max-width: 640px) {
+        .gx-corner { width: 70px; height: 70px; opacity: 0.14; }
       }
     </style>
   </head>
@@ -207,10 +241,71 @@
           });
         }
 
-        const observer = new MutationObserver(addMenuPhotos);
+        // ===== Decorative Georgian-inspired ornaments =====
+        const ORNAMENT_SVG = `
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="32" cy="32" r="6"/>
+    <circle cx="32" cy="32" r="14" stroke-dasharray="2 3"/>
+    <path d="M32 4 L36 18 L32 24 L28 18 Z"/>
+    <path d="M32 60 L36 46 L32 40 L28 46 Z"/>
+    <path d="M4 32 L18 36 L24 32 L18 28 Z"/>
+    <path d="M60 32 L46 36 L40 32 L46 28 Z"/>
+    <path d="M12 12 L22 22 M52 12 L42 22 M12 52 L22 42 M52 52 L42 42"/>
+    <circle cx="32" cy="32" r="1.6" fill="currentColor"/>
+  </g>
+</svg>`;
+        const CORNER_SVG = `
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:100%">
+  <g stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round">
+    <path d="M8 8 L8 60 Q8 80 28 80 L60 80"/>
+    <path d="M16 16 L16 52 Q16 72 36 72 L52 72"/>
+    <circle cx="8" cy="8" r="3"/>
+    <path d="M28 28 Q40 28 40 40 Q40 52 28 52 Q16 52 16 40"/>
+    <path d="M60 8 L52 16 M68 8 L52 24 M76 8 L52 32"/>
+    <path d="M8 60 L16 52 M8 68 L24 52 M8 76 L32 52"/>
+  </g>
+</svg>`;
+
+        function makeDivider() {
+          const wrap = document.createElement('div');
+          wrap.className = 'gx-ornament';
+          wrap.setAttribute('aria-hidden', 'true');
+          wrap.innerHTML = `<span class="gx-line"></span>${ORNAMENT_SVG}<span class="gx-line"></span>`;
+          return wrap;
+        }
+        function addOrnaments() {
+          // Dividers between major sections
+          ['menu', 'reviews', 'visit'].forEach((id) => {
+            const sec = document.getElementById(id);
+            if (!sec || sec.dataset.gxDivider) return;
+            const div = makeDivider();
+            sec.parentNode.insertBefore(div, sec);
+            sec.dataset.gxDivider = '1';
+          });
+          // Corner flourishes in hero & visit
+          ['home', 'visit'].forEach((id) => {
+            const sec = document.getElementById(id);
+            if (!sec || sec.dataset.gxCorners) return;
+            const cs = getComputedStyle(sec);
+            if (cs.position === 'static') sec.style.position = 'relative';
+            ['tl', 'tr', 'bl', 'br'].forEach((pos) => {
+              const c = document.createElement('div');
+              c.className = `gx-corner ${pos}`;
+              c.setAttribute('aria-hidden', 'true');
+              c.innerHTML = CORNER_SVG;
+              sec.appendChild(c);
+            });
+            sec.dataset.gxCorners = '1';
+          });
+        }
+
+        const observer = new MutationObserver(() => { addMenuPhotos(); addOrnaments(); });
         observer.observe(document.documentElement, { childList: true, subtree: true });
-        window.addEventListener('load', () => { addMenuPhotos(); if (location.hash) scrollToSection(location.hash.slice(1)); });
+        window.addEventListener('load', () => { addMenuPhotos(); addOrnaments(); if (location.hash) scrollToSection(location.hash.slice(1)); });
       })();
     </script>
+  </body>
+</html>
   </body>
 </html>
