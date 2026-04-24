@@ -15,6 +15,20 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <script>
+      // On refresh / direct deep-link, send the user back to the home page.
+      // Runs before the app boots, so refreshing on /food, /visit, etc. won't 404.
+      (function () {
+        try {
+          var basePath = location.pathname.replace(/[^/]+$/, '');
+          var rest = location.pathname.slice(basePath.length);
+          var isRoot = rest === '' || /^index\.html$/i.test(rest);
+          if (!isRoot || location.hash) {
+            location.replace(basePath);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script type="module" crossorigin src="./assets/index-l8uKhti5.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-CGOn-lhj.css">
     <style>
